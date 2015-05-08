@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= @page_title || 'Emporium' %></title>
+<%= stylesheet_link_tag "application", media: "all",
+"data-turbolinks-track" => true %>
+<%= javascript_include_tag "application",
+"data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+</head>
+<body>
+
+            <% if flash[:notice] %>
+            <div id="notice">
+            <%= flash[:notice] %>
+            </div>
+            <% end %>
+    
+    <div id="user_nav">
+  <% if current_user %>
+    Logged in as <%= current_user.email %>.
+    <%= link_to "Log out", log_out_path %>
+  <% else %>
+    <%= link_to "Sign up", sign_up_path %> or
+    <%= link_to "log in", log_in_path %>
+  <% end %>
+</div>
+    
+    <div class="container-fluid">
+
+        
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+            <div class="page-header">
+                <center>
+                <h1 id="logo">Emporium&trade;</h1>
+                <small><h2 id="slogan">Books on Rails</h2></small></center>
+            </div>
+            
+       
+    
+
+        
+            <ul class="nav nav-pills">   
+
+                <li role="presentation" class="active"><a class = "navbar-brand" href="/admin/author">Authors</a></li>
+                <li role="presentation" class="active"><a class = "navbar-brand" href="/admin/publishers">Publishers</a></li>
+                <li role="presentation" class="active"><a class = "navbar-brand" href="/admin/books">Books</a></li>
+                <li role="presentation" class="active"><a class = "navbar-brand" href="catalog/index">Catalog</a></li>
+                <li role="presentation" class="active"><a class = "navbar-brand" href="/about">About</a></li>
+
+
+            </ul> 
+        
+    
+ 
+        
+            
+            <%= "<h1>#{@page_title}</h1>".html_safe if @page_title %>
+        
+   
+    
+    
+    <%= yield %>
+                
+        <center>&copy; 2015 Emporium</center>
+            
+        </div>
+        
+        
+        <div class="col-xs-6 col-md-4">
+            
+           <div id="shopping_cart">
+            <% if @cart %>
+               <%= render :partial => "cart/cart" %> </div>
+
+            <%= drop_receiving_element("shopping_cart", :url => { :controller => "cart", :action => "add" }) %>
+            <% end %>
+           
+        </div>
+   
+    
+  
+    
+  
+
+</div> 
+        </div>
+    
+</body>
+</html>
