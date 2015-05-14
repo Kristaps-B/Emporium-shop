@@ -1,13 +1,16 @@
     
-<div class="panel panel-primary">
+<div class="panel panel-primary cart">
     
 
 <div class="panel-heading"><h3>Your Shopping Cart</h3></div>    
 <% if flash[:cart_notice] %>
 <%= render :partial => "cart/cart_notice" %>
 <% end %>
+    <h1><center><span class="glyphicon glyphicon-shopping-cart"></span></center></h2>
 <ul>
 <% for item in @cart.cart_items %>
+    
+    
 <li id="cart_item_<%= item.book.id %>">
 <%= render :partial => "cart/item", :object => item %>
 </li>

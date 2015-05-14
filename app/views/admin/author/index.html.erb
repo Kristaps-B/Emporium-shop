@@ -1,9 +1,10 @@
-<table>
+<table class = "table  table-striped">
 <tr>
-<th>Name</th>
-<th>Edit</th>
-<th>Delete</th>
+    <th>Name</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
 </tr>
 <%= render :partial => 'author', :collection => @authors %>
 </table>
-<p><%= link_to 'Add a new author', :action => 'new' %></p>
+<p><%= link_to '<span class="glyphicon glyphicon-plus"></span> Add a new author'.html_safe, {:action => 'new'}, {:class => 'btn btn-info'} %></p>

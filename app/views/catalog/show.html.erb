@@ -1,5 +1,5 @@
 <h2>by <%= @book.authors.map{|a| a.name}.join(", ") %></h2>
-<%= image_tag @book.cover_image.url unless @book.cover_image.blank? %>
+<%= image_tag(@book.cover_image.url, :size => "360x480") unless @book.cover_image.blank? %>
 <dl>
 <dt>Price</dt>
 <dd>$<%= sprintf("%0.2f", @book.price) -%></dd>

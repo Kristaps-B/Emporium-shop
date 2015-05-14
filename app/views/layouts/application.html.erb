@@ -9,51 +9,50 @@
 <%= csrf_meta_tags %>
 </head>
 <body>
-
-            <% if flash[:notice] %>
-            <div id="notice">
-            <%= flash[:notice] %>
-            </div>
-            <% end %>
-    
-    <div id="user_nav">
+<!--  -->
+    <nav class="navbar navbar-inverse">
+        
+            <h1><div class="navbar-header">
+      <a class="navbar-brand" href="#">EMPORIUM&trade; - Books on Rails</a>
+                </div></h1>
+        
+<ul class="nav navbar-nav navbar-right">
   <% if current_user %>
-    Logged in as <%= current_user.email %>.
-    <%= link_to "Log out", log_out_path %>
+    <li><a href="#" >Logged in as <%= current_user.email %></a></li>
+    <li><%= link_to '<span class="glyphicon glyphicon-log-in"></span> Log out'.html_safe, log_out_path %></li>
   <% else %>
-    <%= link_to "Sign up", sign_up_path %> or
-    <%= link_to "log in", log_in_path %>
+    
+        <li><%= link_to '<span class="glyphicon glyphicon-user"></span> Sign up'.html_safe, sign_up_path %></li> or
+        <li><%= link_to '<span class="glyphicon glyphicon-log-in"></span> log in'.html_safe, log_in_path %></li>
+    
   <% end %>
-</div>
+  <% if current_user %>
+   </ul>     
+        <ul class="nav navbar-nav">
+            <li class="<%= 'active' if current_page?('/admin/author') %>"><a href="/admin/author">Authors</a></li>
+            <li class="<%= 'active' if current_page?('/admin/publishers') %>"><a href="/admin/publishers">Publishers</a></li>
+            <li class="<%= 'active' if current_page?('/admin/books') %>"><a href="/admin/books">Books</a></li>
+            <li class="<%= 'active' if current_page?('/catalog/index') %>"><a href="/catalog/index">Catalog</a></li>
+            <li class="<%= 'active' if current_page?('/about') %>"><a href="/about">About</a></li>
+      </ul>
+    <% end %>
+</nav>
     
     <div class="container-fluid">
-
+        
+        
+         
+        
+        <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+              <%= value %>
+        </div>
+  <% end %>
+        
+        
         
         <div class="row">
             <div class="col-xs-12 col-md-8">
-            <div class="page-header">
-                <center>
-                <h1 id="logo">Emporium&trade;</h1>
-                <small><h2 id="slogan">Books on Rails</h2></small></center>
-            </div>
-            
-       
-    
-
-        
-            <ul class="nav nav-pills">   
-
-                <li role="presentation" class="active"><a class = "navbar-brand" href="/admin/author">Authors</a></li>
-                <li role="presentation" class="active"><a class = "navbar-brand" href="/admin/publishers">Publishers</a></li>
-                <li role="presentation" class="active"><a class = "navbar-brand" href="/admin/books">Books</a></li>
-                <li role="presentation" class="active"><a class = "navbar-brand" href="catalog/index">Catalog</a></li>
-                <li role="presentation" class="active"><a class = "navbar-brand" href="/about">About</a></li>
-
-
-            </ul> 
-        
-    
- 
         
             
             <%= "<h1>#{@page_title}</h1>".html_safe if @page_title %>
@@ -63,7 +62,11 @@
     
     <%= yield %>
                 
-        <center>&copy; 2015 Emporium</center>
+        
+                
+        
+                
+      
             
         </div>
         
@@ -86,6 +89,8 @@
 
 </div> 
         </div>
+    
+    <div class="navbar navbar-inverse navbar-fixed-bottom"><center><a href="/about">&copy; 2015 Emporium</a></center></div>
     
 </body>
 </html>

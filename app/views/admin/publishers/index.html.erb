@@ -4,19 +4,20 @@
 
 
 <h1>Listing publishers</h1>
-<table>
+<table  class = "table  table-striped">
 <tr>
 <th>Name</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
+<th>Show</th>
+<th>Edit</th>
+<th>Delete</th>
+
+
 </tr>
 <% @publishers.each do |publisher| %>
 <tr>
 <td><%= publisher.name %></td>
-<td><%= link_to 'Show', :action => 'show', :id => publisher %></td>
-<td><%= link_to 'Edit', :action => 'edit', :id => publisher %></td>
+<td><%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, :action => 'show', :id => publisher %></td>
+<td><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, :action => 'edit', :id => publisher %></td>
     
 <td><%= button_to 'Destroy', {:action => 'destroy', :id => publisher}, method: :delete, data: { confirm: "Are you sure?" } %></td>
     
@@ -24,4 +25,4 @@
 <% end %>
 </table>
 <br />
-<%= link_to 'New Publisher', :action => 'new' %>
+<%= link_to '<span class="glyphicon glyphicon-plus"></span> New Publisher'.html_safe, {:action => 'new'}, {:class => 'btn btn-info'} %>

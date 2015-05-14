@@ -1,17 +1,19 @@
-<table>
+<table  class = "table  table-striped">
 <tr>
 <th><a href="?sort_by=publisher_id">Publisher</a></th>
 <th><a href="?sort_by=title">Title</a></th>
 <th><a href="?sort_by=isbn">ISBN</a></th>
-<th colspan="3"></th>
+<th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
 </tr>
 <% for book in @books %>
 <tr>
 <td><%=h book.publisher.name %></td>
 <td><%=h book.title %></td>
 <td><%=h book.isbn %></td>
-<td><%= link_to 'Show', :action => 'show', :id => book %></td>
-<td><%= link_to 'Edit', :action => 'edit', :id => book %></td>
+<td><%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, :action => 'show', :id => book %></td>
+<td><%= link_to '<span class="glyphicon glyphicon-pencil"></span> '.html_safe, :action => 'edit', :id => book %></td>
     
 <!--<td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>-->
     
@@ -22,4 +24,4 @@
 </table>
 <%= will_paginate @books %>
 <br />
-<%= link_to 'New book', :action => 'new' %>
+<%= link_to '<span class="glyphicon glyphicon-plus"></span> New book'.html_safe, {:action => 'new'}, {:class => 'btn btn-info'} %>

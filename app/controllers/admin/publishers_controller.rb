@@ -66,6 +66,7 @@ end
   # DELETE /publishers/1.json
   def destroy
     @publisher = Publisher.find(params[:id])
+      flash[:notice] = "Publisher was successfully deleted"
     @publisher.destroy
     respond_to do |format|
     format.html { redirect_to(admin_publishers_url) }
