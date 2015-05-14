@@ -8,7 +8,7 @@ module ApplicationHelper
         link_to text, {:url => {:controller => "cart", :action => "remove", :id => book}, :remote => true}, {:title => "Remove book", :href => url_for( :controller => "cart", :action => "remove", :id => book)}
     end
     
-    def clear_cart_link(text = "Clear Cart")
+    def clear_cart_link(text = "<h2><span class='glyphicon glyphicon-trash'></span> Clear cart</h2>".html_safe)
         link_to text, {:url => { :controller => "cart", :action => "clear" }, :remote => true}, {:href => url_for(:controller => "cart", :action => "clear")}
     end
     
