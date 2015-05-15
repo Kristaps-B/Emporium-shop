@@ -1,0 +1,13 @@
+
+
+<div id="comment_list">
+    <% @comments.each do |comment|  %>
+       <li class="list-group-item">
+           <h2><span class="glyphicon glyphicon-comment"></span></h2>
+            <%=h User.find(comment.user_id).email %>:
+            <%=h comment.txt  %>
+     <br/>
+            Rating: <%=h comment.rating %>
+        </li>
+    <% end %>
+</div>

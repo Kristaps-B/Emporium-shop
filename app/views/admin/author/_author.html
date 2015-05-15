@@ -3,6 +3,6 @@
     <td><%= author.name %></td>
     <td><%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, :action => 'show', :id => author %></td>
     <td><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, :action => 'edit', :id => author %></td>
-    <td><%= button_to 'Destroy', {:action => 'destroy', :id => author}, method: :delete, data: { confirm: "Are you sure?" }  %></td>
+    <td><%= button_to 'Delete', {:action => 'destroy', :id => author}, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn btn-default"  %></td>
     
 </tr>

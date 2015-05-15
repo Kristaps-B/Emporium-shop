@@ -43,11 +43,11 @@
         
          
         
-        <% flash.each do |key, value| %>
-        <div class="<%= flash_class(key) %>">
-              <%= value %>
-        </div>
-  <% end %>
+<% if flash[:notice] %>
+    <div id="notice" class="alert alert-success" role="alert">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
         
         
         

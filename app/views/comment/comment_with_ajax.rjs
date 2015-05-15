@@ -1,0 +1,4 @@
+
+page.replace_html "comment_list", :partial => "comment_list"
+page.replace_html "comment_flash", :partial => "comment_notice"
+page.visual_effect :fade, 'flash_notice', :duration => 3

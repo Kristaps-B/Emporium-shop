@@ -41,3 +41,8 @@ list-style: square;
 .cart {
 
 }
+
+textarea {
+    width: 300px;
+    height: 90px;
+}

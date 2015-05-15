@@ -1,0 +1,18 @@
+
+
+
+<%= render :partial => "comment/comment_notice" %>
+
+
+    
+<br/>
+<p><label for="txt">Comment:</label><br/>
+<%= text_area 'comment', 'txt' %></p>
+
+
+    <label for="rating">Rating: </label>
+<%= select("comment", "rating", Comment::RATINGS, {:include_blank => false}) %>
+
+
+    <%= hidden_field_tag 'user_id', @user.id  %>
+    <%= hidden_field_tag 'book_id', @book.id  %>

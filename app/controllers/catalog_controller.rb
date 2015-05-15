@@ -10,15 +10,48 @@ class CatalogController < ApplicationController
 
   def show
       @book = Book.find(params[:id]) rescue nil
-return render(:text => "Not found", :status => 404) unless @book
-@page_title = @book.title
+    return render(:text => "Not found", :status => 404) unless @book
+    @page_title = @book.title
+      
+      
+      
+      @user = User.find(session[:user_id])
+      
+       @comments = Comment.where(['book_id = ?', @book.id])
+      @comments = @comments.reverse
+      
+      puts "========================================================"
+      puts @comments
+      
+      
+      
+      @comments.each do |item|
+        puts "----------------------------"
+        puts item.txt
+        puts User.find(item.user_id).email
+        puts "---------------------------"
+
+      end
+    
+      
+      
   end
 
   def search
   end
 
   def latest
-@page_title = "Latest Books"
-@books = Book.latest
-end
+        @page_title = "Latest Books"
+        @books = Book.latest
+  end
+    
+    
+    def  ajax_show
+        @book = Book.find(5)
+        puts params[:id]
+        @comment = Comment.new
+        @comments = Comment.where(['book_id = ?', @book.id])
+        
+        render 'comment/comment_with_ajax'
+    end
 end

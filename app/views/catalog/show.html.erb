@@ -10,4 +10,33 @@
 <dt>Blurb</dt>
 <dd><%= @book.blurb %></dd>
 </dl>
+
+
+
+
+
+<br/>
+
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Comments</div>
+  <div class="panel-body">
+    <p>
+      <%= form_tag( {:action => 'create', :controller => 'comment'}, :multipart => true, :remote => true ) do %>
+    <%= render :partial => 'comment/form' %>
+    <%= submit_tag 'Create' %>
+<% end %>
+      </p>
+  </div>
+<ul class="list-group">
+
+ <%= render :partial => 'comment/comment_list' %>   
+    
+</ul>
+</div>
+
+<br/>
+<br/>
+
 <p><%= link_to "Back to Catalog", :action => "index" %></p>
