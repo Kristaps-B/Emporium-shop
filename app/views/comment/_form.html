@@ -11,7 +11,7 @@
 
 
     <label for="rating">Rating: </label>
-<%= select("comment", "rating", Comment::RATINGS, {:include_blank => false}) %>
+<%= select("comment", "rating", Comment::RATINGS, {:include_blank => false}) %><br/>
 
 
     <%= hidden_field_tag 'user_id', @user.id  %>

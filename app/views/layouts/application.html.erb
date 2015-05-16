@@ -7,6 +7,44 @@
 <%= javascript_include_tag "application",
 "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
+    
+    
+<script type = "text/javascript">
+        
+       
+   window.onload = function() {
+
+  function getScrollTop() {
+    if (typeof window.pageYOffset !== 'undefined' ) {
+      // Most browsers
+      return window.pageYOffset;
+    }
+
+    var d = document.documentElement;
+    if (d.clientHeight) {
+      // IE in standards mode
+      return d.scrollTop;
+    }
+
+    // IE in quirks mode
+    return document.body.scrollTop;
+  }
+
+  window.onscroll = function() {
+    var box = document.getElementById('shopping_cart'),
+        scroll = getScrollTop();
+
+    if (scroll <= 28) {
+      box.style.top = "30px";
+    }
+    else {
+      box.style.top = (scroll + 2) + "px";
+    }
+  };
+
+};
+    </script>    
+    
 </head>
 <body>
 <!--  -->
@@ -38,7 +76,7 @@
     <% end %>
 </nav>
     
-    <div class="container-fluid">
+    <div id="container" class="container-fluid">
         
         
          
@@ -91,6 +129,8 @@
         </div>
     
     <div class="navbar navbar-inverse navbar-fixed-bottom"><center><a href="/about">&copy; 2015 Emporium</a></center></div>
+    
+    
     
 </body>
 </html>

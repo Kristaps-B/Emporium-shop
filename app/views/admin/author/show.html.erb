@@ -5,6 +5,6 @@
 <dd><%= @author.last_name %></dd>
 </dl>
 <p>
-<%= link_to 'Edit', :action => 'edit', :id => @author %> |
-<%= link_to 'Back', :action => 'index' %>
+<%= link_to 'Show', {:action => 'show', :id => @author}, :class => 'btn btn-info' %> 
+<%= link_to 'Back', {:action => 'index'}, :class => 'btn btn-info' %>
 </p>

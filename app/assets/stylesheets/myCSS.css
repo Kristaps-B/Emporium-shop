@@ -4,6 +4,8 @@
     margin: 10px;
     padding: 5px;
     cursor: pointer;
+    width: 350px;
+    height: 300px;
 }
 
 body { padding-bottom: 70px; }
@@ -12,37 +14,41 @@ table {width: 100%;}
 
 
 #errorExplanation {
-width: 400px;
-border: 2px solid red;
-padding: 7px;
-padding-bottom: 12px;
-margin-bottom: 20px;
-background-color: #f0f0f0;
+    @extend .alert; 
+    @extend .alert-danger;
 }
 #errorExplanation h2 {
-text-align: left;
-font-weight: bold;
-padding: 5px 5px 5px 15px;
-font-size: 12px;
-margin: -7px;
-background-color: #c00;
-color: #fff;
+
 }
 #errorExplanation p {
-color: #333;
-margin-bottom: 0;
-padding: 5px;
+   
 }
 #errorExplanation ul li {
-font-size: 12px;
-list-style: square;
+ @extend .list-group; 
+ @extend .list-group-item;
+    @extend .list-group-item-warning;
 }
 
 .cart {
-
+    
 }
 
 textarea {
     width: 300px;
     height: 90px;
 }
+
+form {
+    @extend .form-group;
+}
+
+input:not([disabled]):not([type="submit"]) {
+    @extend .form-control;
+}
+
+input[type=submit] {
+    @extend .btn;
+    @extend .btn-default;
+}
+
+

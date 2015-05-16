@@ -29,6 +29,8 @@ class CommentController < ApplicationController
                  #render :action => "comment_with_ajax"
               #redirect_to :controller => 'catalog', :action => 'ajax_show'
                
+               
+               
               
                @book = Book.find(params[:book_id])
                
@@ -36,8 +38,8 @@ class CommentController < ApplicationController
                 @comments = Comment.where(['book_id = ?', @book.id])
                
                @comments = @comments.reverse
-               
-               
+               @comment = @comments.first
+               puts @comment.id
                 render :action => "comment_with_ajax"
             end
         elsif
