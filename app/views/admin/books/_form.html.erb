@@ -1,3 +1,5 @@
+<div class="well well-lg">
+
 <%= error_messages_for 'book' %>
 
 <p><label for="book_title">Title</label><br/>
@@ -26,5 +28,5 @@ options_from_collection_for_select(@authors, :id, :name,
 <%= text_field 'book', 'page_count' %></p>
 
 <p><label for="book_cover_image">Cover image</label><br/>
-<%= file_field 'book', "cover_image" %></p>
-<br/>
+<%= file_field 'book', "cover_image" %></p>   
+</div>
