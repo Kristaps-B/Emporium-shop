@@ -41,7 +41,14 @@ class CommentController < ApplicationController
                @comment = @comments.first
                puts @comment.id
                 render :action => "comment_with_ajax"
+            else
+               flash.now[:comment_error] = "Comment error!"
+           
+                render :action => "error_with_ajax"
+               
             end
+               
+            
         elsif
         
             if @comment.save
@@ -49,6 +56,9 @@ class CommentController < ApplicationController
                 redirect_to :controller => 'catalog', :action => 'show', :id => @comment.book_id
             else
                 redirect_to :controller => 'catalog', :action => 'show', :id => @comment.book_id
+                puts "==========================================================="
+                puts "                           KLUDA!"
+                puts "==========================================================="
             end
         end
         

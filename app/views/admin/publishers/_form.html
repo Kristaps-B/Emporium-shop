@@ -1,15 +1,5 @@
 <%= form_for([:admin, @publisher]) do |f| %>
-  <% if @publisher.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@publisher.errors.count, "error") %> prohibited this publisher from being saved:</h2>
-
-      <ul>
-      <% @publisher.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= error_messages_for 'publisher' %>
 
   <div class="field">
     <%= f.label :name %><br>
@@ -19,3 +9,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+<br/>
